@@ -1,17 +1,20 @@
-# Usa una imagen base con Maven y OpenJDK
-FROM maven:3.8.4-openjdk-11
+# Usar una imagen base con OpenJDK
+FROM openjdk:11-jdk
 
-# Define el directorio de trabajo dentro del contenedor
+# Instalar Maven
+RUN apt-get update && apt-get install -y maven
+
+# Definir el directorio de trabajo dentro del contenedor
 WORKDIR /src
 
-# Copia todos los archivos del proyecto al contenedor
+# Copiar todo el proyecto dentro del contenedor
 COPY . .
 
-# Ejecuta Maven para construir el proyecto
+# Ejecutar Maven para construir el proyecto
 RUN mvn clean install
 
-# Expone el puerto 8080 (puedes cambiarlo si tu app usa otro puerto)
+# Exponer el puerto (ajustar si tu aplicación usa otro)
 EXPOSE 8080
 
-# Comando para ejecutar la aplicación
+# Ejecutar el archivo JAR generado por Maven
 CMD ["java", "-jar", "target/java-frontend-demo-1.0-SNAPSHOT.jar"]
