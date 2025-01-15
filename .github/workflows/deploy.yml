@@ -26,7 +26,7 @@ jobs:
       run: mvn clean install  # Ahora Maven estará disponible
 
     - name: Install Vercel CLI
-      run: npm install -g vercel  # Instalar Vercel CLI globalmente
+      run: npm install -g vercel  # Instalar Vercel CLI globalmen
 
     - name: Deploy to Vercel
       run: vercel --prod --yes
