@@ -1,8 +1,9 @@
 {
+    "version": 2,
     "builds": [
       {
-        "src": "Dockerfile",
-        "use": "@vercel/docker@2.0.0"
+        "src": "target/java-frontend-demo-1.0-SNAPSHOT.jar",
+        "use": "@vercel/static"
       }
     ]
   }
