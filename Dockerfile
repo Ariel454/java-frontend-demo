@@ -1,13 +1,13 @@
-# Usar una imagen base con OpenJDK
+# Usar una imagen base con OpenJDK 11
 FROM openjdk:11-jdk
 
 # Instalar Maven
 RUN apt-get update && apt-get install -y maven
 
 # Definir el directorio de trabajo dentro del contenedor
-WORKDIR /src
+WORKDIR /app
 
-# Copiar todo el proyecto dentro del contenedor
+# Copiar el código fuente al contenedor
 COPY . .
 
 # Ejecutar Maven para construir el proyecto
