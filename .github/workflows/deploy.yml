@@ -1,4 +1,4 @@
-name: CI/CD for Java Frontend
+name: CI/CD for Java Vaadin Application
 
 on:
   push:
@@ -19,14 +19,13 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
 
-    - name: Install Vercel CLI
-      run: npm install -g vercel
+    - name: Install Maven
+      run: sudo apt-get install -y maven  # Esto instalará Maven en el entorno
 
     - name: Build and package with Maven
-      run: mvn clean package
+      run: mvn clean install  # Ahora Maven estará disponible
 
     - name: Deploy to Vercel
       run: vercel --prod --yes
       env:
         VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-
